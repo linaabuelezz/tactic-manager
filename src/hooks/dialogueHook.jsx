@@ -20,5 +20,3 @@ export const DialogueProvider = ({children}) => {
 DialogueProvider.propTypes = {
     children: PropTypes.node
 }
-
-    
