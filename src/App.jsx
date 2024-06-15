@@ -1,20 +1,20 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import { useState } from "react";
+import { Theme } from "@radix-ui/themes";
+import Navbar from "./components/navbar";
 import "./App.css";
-import Pitch from './components/Pitch';
-import { Theme } from '@radix-ui/themes';
-import AddPlayer from './components/AddPlayer';
+import Pitch from "./components/pitch";
+import AddPlayer from "./components/addPlayer";
+
+import { DialogueProvider } from "./hooks/dialogueHook";
 
 function App() {
   return (
-    <>
     <Theme>
-      <Navbar />
-      <Pitch />
-      <AddPlayer />
+      <DialogueProvider>
+        <Navbar />
+        <Pitch />
+        <AddPlayer />
+      </DialogueProvider>
     </Theme>
-    </>
   );
 }
 

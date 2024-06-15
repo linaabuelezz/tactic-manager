@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  console.log(props);
 
   return (
     <nav className="bg-black p-3 h-16 shadow-xl mt-0">
@@ -31,7 +32,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="./About.jsx" className="text-white hover:text-gray-300">
+            <a href="./about.jsx" className="text-white hover:text-gray-300">
               About
             </a>
           </li>
