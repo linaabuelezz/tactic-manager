@@ -63,7 +63,7 @@ const Pitch = () => {
           </div>
 
           <div className="absolute bottom-6 right-64 text-8xl hover:text-gray-300 cursor-pointer">
-            <p onClick={openModal}>
+            <p>
               <strong>+</strong>
             </p>
           </div>
