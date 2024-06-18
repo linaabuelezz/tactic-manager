@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  console.log(props);
+  
 
   return (
     <nav className="bg-black p-3 h-16 shadow-xl mt-0">

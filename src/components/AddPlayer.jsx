@@ -1,18 +1,32 @@
 import { Dialog, Button, Flex, TextField, Text } from "@radix-ui/themes";
 import { useState, useContext } from "react";
-import Pitch from "./pitch";
 import { DialogueContext } from "../hooks/dialogueHook";
+import PropTypes from 'prop-types';
 
-const AddPlayer = () => {
+const AddPlayer = ({selectedFormation, savePlayer}) => {
   const { isModalOpen, closeModal } = useContext(DialogueContext);
-  const [name, setName] = useState("");
+  const [playerName, setName] = useState("");
   const [kitNumber, setKitNumber] = useState("");
+  const [playerPosition, setPlayerPosition] = useState(selectedFormation?.positions?.[0]?.id || "");
+
 
   const handleSave = () => {
-    console.log("Player Name:", name);
-    console.log("Kit Number:", kitNumber);
+    const newPlayer = {
+      name: playerName,
+      kitNumber: kitNumber,
+      position: playerPosition,
+    };
+    console.log(playerPosition);
+    savePlayer(newPlayer); 
     closeModal();
+    setName("");
+    setKitNumber("");
+    setPlayerPosition("");
   };
+
+  if (!selectedFormation) {
+    return null; 
+  }
 
   return (
     <Dialog.Root
@@ -31,7 +45,7 @@ const AddPlayer = () => {
               Name
             </Text>
             <TextField.Root
-              value={name}
+              value={playerName}
               placeholder="Enter player's name"
               onChange={(e) => setName(e.target.value)}
             />
@@ -45,6 +59,25 @@ const AddPlayer = () => {
               placeholder="Enter player's kit no."
               onChange={(e) => setKitNumber(e.target.value)}
             />
+          </label>
+          <label>
+            <Text as="div" size="2" mb="1" weight="bold">
+              Positions
+            </Text>
+            {selectedFormation?.positions && selectedFormation?.positions.length > 0 && (
+  <select
+    value={playerPosition}
+    onChange={(e) => setPlayerPosition(e.target.value)}
+    className="border-black border-2"
+  >
+      <option disabled value="Select a position.">Select a position.</option>
+    {selectedFormation?.positions.map((position, index) => (
+      <option key={index} value={position.id} className="">
+        {position.id}
+      </option>
+    ))}
+  </select>
+)}
           </label>
         </Flex>
 
@@ -62,5 +95,18 @@ const AddPlayer = () => {
     </Dialog.Root>
   );
 };
+
+AddPlayer.propTypes = {
+  selectedFormation: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    positions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        positionName: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }),
+};
+
 
 export default AddPlayer;
