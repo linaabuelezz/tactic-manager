@@ -102,7 +102,7 @@ AddPlayer.propTypes = {
     positions: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
-        positionName: PropTypes.string.isRequired,
+        // positionName: PropTypes.string.isRequired,
       })
     ).isRequired,
   }),
