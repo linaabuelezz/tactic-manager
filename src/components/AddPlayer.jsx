@@ -1,14 +1,15 @@
 import { Dialog, Button, Flex, TextField, Text } from "@radix-ui/themes";
 import { useState, useContext } from "react";
 import { DialogueContext } from "../hooks/dialogueHook";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const AddPlayer = ({selectedFormation, savePlayer}) => {
+const AddPlayer = ({ selectedFormation, savePlayer }) => {
   const { isModalOpen, closeModal } = useContext(DialogueContext);
   const [playerName, setName] = useState("");
   const [kitNumber, setKitNumber] = useState("");
-  const [playerPosition, setPlayerPosition] = useState(selectedFormation?.positions?.[0]?.id || "");
-
+  const [playerPosition, setPlayerPosition] = useState(
+    selectedFormation?.positions?.[0]?.id || ""
+  );
 
   const handleSave = () => {
     const newPlayer = {
@@ -17,7 +18,7 @@ const AddPlayer = ({selectedFormation, savePlayer}) => {
       position: playerPosition,
     };
     console.log(playerPosition);
-    savePlayer(newPlayer); 
+    savePlayer(newPlayer);
     closeModal();
     setName("");
     setKitNumber("");
@@ -25,14 +26,11 @@ const AddPlayer = ({selectedFormation, savePlayer}) => {
   };
 
   if (!selectedFormation) {
-    return null; 
+    return null;
   }
 
   return (
-    <Dialog.Root
-      open={isModalOpen}
-      onOpenChange={closeModal}
-    >
+    <Dialog.Root open={isModalOpen} onOpenChange={closeModal}>
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Add player</Dialog.Title>
         <Dialog.Description size="2" mb="4">
@@ -64,20 +62,23 @@ const AddPlayer = ({selectedFormation, savePlayer}) => {
             <Text as="div" size="2" mb="1" weight="bold">
               Positions
             </Text>
-            {selectedFormation?.positions && selectedFormation?.positions.length > 0 && (
-  <select
-    value={playerPosition}
-    onChange={(e) => setPlayerPosition(e.target.value)}
-    className="border-black border-2"
-  >
-      <option disabled value="Select a position.">Select a position.</option>
-    {selectedFormation?.positions.map((position, index) => (
-      <option key={index} value={position.id} className="">
-        {position.id}
-      </option>
-    ))}
-  </select>
-)}
+            {selectedFormation?.positions &&
+              selectedFormation?.positions.length > 0 && (
+                <select
+                  value={playerPosition}
+                  onChange={(e) => setPlayerPosition(e.target.value)}
+                  className="border-black border-2"
+                >
+                  <option disabled value="Select a position.">
+                    Select a position.
+                  </option>
+                  {selectedFormation?.positions.map((position, index) => (
+                    <option key={index} value={position.id} className="">
+                      {position.id}
+                    </option>
+                  ))}
+                </select>
+              )}
           </label>
         </Flex>
 
@@ -107,6 +108,5 @@ AddPlayer.propTypes = {
     ).isRequired,
   }),
 };
-
 
 export default AddPlayer;

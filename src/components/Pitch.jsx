@@ -1,11 +1,10 @@
 import { useState, useContext } from "react";
 import { DialogueContext } from "../hooks/dialogueHook";
 import AddPlayer from "./addPlayer";
-
-
+import SelectPlayer from "./selectPlayer";
+import { SelectPlayerContext } from "../hooks/selectPlayerHook";
 
 const Pitch = () => {
-
   const formations = [
     {
       name: "4-3-3",
@@ -70,8 +69,11 @@ const Pitch = () => {
   ];
 
   const { openModal } = useContext(DialogueContext);
+  const { isSelectOpen, openSelect, closeSelect } =
+    useContext(SelectPlayerContext);
   const [selectedFormation, setSelectedFormation] = useState(formations[0]);
   const [players, setPlayers] = useState([]);
+  const [selectedPosition, setSelectedPosition] = useState("");
 
   const handleFormationChange = (e) => {
     const selected = formations.find(
@@ -81,9 +83,12 @@ const Pitch = () => {
   };
 
   const savePlayer = (newPlayer) => {
-    setPlayers([...players, newPlayer])
+    setPlayers([...players, newPlayer]);
   };
-
+  const handlePlusClick = (positionId) => {
+    openSelect(); // Open the select player dialog
+    setSelectedPosition(positionId); // Set selected position for filtering
+  };
 
   return (
     <div className="flex">
@@ -107,11 +112,13 @@ const Pitch = () => {
         </button>
         <div className="border-2 mt-2"></div>
         <div>
-          <ul>{players.map((player, index) => (
+          <ul>
+            {players.map((player, index) => (
               <li key={index}>
                 {player.name} - {player.kitNumber} ({player.position})
               </li>
-            ))}</ul>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -131,23 +138,27 @@ const Pitch = () => {
                 right: position.position,
                 bottom: getVerticalPosition(position.type),
               }}
+              onClick={() => handlePlusClick(position.id)}
             >
               <strong>+</strong>
             </span>
           ))}
 
           <div className="absolute bottom-6 right-64 text-8xl hover:text-gray-300 cursor-pointer">
-            <p>
+            <p onClick={() => handlePlusClick("GK")}>
               <strong>+</strong>
             </p>
           </div>
         </div>
       </div>
-      <AddPlayer selectedFormation = {selectedFormation} savePlayer={savePlayer} />
+      <AddPlayer
+        selectedFormation={selectedFormation}
+        savePlayer={savePlayer}
+      />
+      <SelectPlayer players={players} selectedPosition={selectedPosition} />
     </div>
   );
 };
-
 
 const getVerticalPosition = (type) => {
   switch (type) {
