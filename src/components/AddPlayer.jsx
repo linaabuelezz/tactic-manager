@@ -3,14 +3,16 @@ import { useState, useContext } from "react";
 import { DialogueContext } from "../hooks/dialogueHook";
 import PropTypes from "prop-types";
 
-const AddPlayer = ({ selectedFormation, savePlayer }) => {
+
+const AddPlayer = ({ selectedFormation, savePlayer  }) => {
   const { isModalOpen, closeModal } = useContext(DialogueContext);
   const [playerName, setName] = useState("");
   const [kitNumber, setKitNumber] = useState("");
   const [playerPosition, setPlayerPosition] = useState(
-    selectedFormation?.positions?.[0]?.id || ""
+    "GK"
   );
 
+  
   const handleSave = () => {
     const newPlayer = {
       name: playerName,
@@ -22,7 +24,7 @@ const AddPlayer = ({ selectedFormation, savePlayer }) => {
     closeModal();
     setName("");
     setKitNumber("");
-    setPlayerPosition("");
+    setPlayerPosition("GK");
   };
 
   if (!selectedFormation) {
@@ -66,14 +68,17 @@ const AddPlayer = ({ selectedFormation, savePlayer }) => {
               selectedFormation?.positions.length > 0 && (
                 <select
                   value={playerPosition}
-                  onChange={(e) => setPlayerPosition(e.target.value)}
+                  onChange={(e) => {setPlayerPosition(e.target.value)
+                    console.log(e.target.value)
+                  }}
                   className="border-black border-2"
                 >
                   <option disabled value="Select a position.">
                     Select a position.
                   </option>
                   {selectedFormation?.positions.map((position, index) => (
-                    <option key={index} value={position.id} className="">
+                    <option key={index} value={position.id} className=""
+                    >
                       {position.id}
                     </option>
                   ))}
@@ -107,6 +112,13 @@ AddPlayer.propTypes = {
       })
     ).isRequired,
   }),
+  players: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      kitNumber: PropTypes.string.isRequired,
+      position: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default AddPlayer;

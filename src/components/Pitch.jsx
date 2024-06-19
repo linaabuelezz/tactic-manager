@@ -3,76 +3,81 @@ import { DialogueContext } from "../hooks/dialogueHook";
 import AddPlayer from "./addPlayer";
 import SelectPlayer from "./selectPlayer";
 import { SelectPlayerContext } from "../hooks/selectPlayerHook";
+import PlayerCard from "./playerCard";
 
 const Pitch = () => {
   const formations = [
     {
       name: "4-3-3",
       positions: [
-        { type: "defender", position: "60px", id: "RB" },
-        { type: "defender", position: "170px", id: "CB 1" },
-        { type: "defender", position: "340px", id: "CB 2" },
-        { type: "defender", position: "450px", id: "LB" },
-        { type: "midfielder", position: "110px", id: "CM 1" },
-        { type: "midfielder", position: "258px", id: "CM 2" },
-        { type: "midfielder", position: "406px", id: "CM 3" },
-        { type: "forward", position: "90px", id: "RW" },
-        { type: "forward", position: "258px", id: "ST" },
-        { type: "forward", position: "426px", id: "LW" },
+      {type: "goalkeeper", position: "258px", id: "GK"},
+      { type: "defender", position: "60px", id: "RB" },
+      { type: "defender", position: "170px", id: "CB 1" },
+      { type: "defender", position: "340px", id: "CB 2" },
+      { type: "defender", position: "450px", id: "LB" },
+      { type: "midfielder", position: "110px", id: "CM 1" },
+      { type: "midfielder", position: "258px", id: "CM 2" },
+      { type: "midfielder", position: "406px", id: "CM 3" },
+      { type: "forward", position: "90px", id: "RW" },
+      { type: "forward", position: "258px", id: "ST" },
+      { type: "forward", position: "426px", id: "LW" },
       ],
-    },
-    {
+      },
+      {
       name: "4-4-2",
       positions: [
-        { type: "defender", position: "60px", id: "RB" },
-        { type: "defender", position: "170px", id: "CB 1" },
-        { type: "defender", position: "340px", id: "CB 2" },
-        { type: "defender", position: "450px", id: "LB" },
-        { type: "midfielder", position: "60px", id: "LM" },
-        { type: "midfielder", position: "170px", id: "CM 1" },
-        { type: "midfielder", position: "340px", id: "CM 2" },
-        { type: "midfielder", position: "450px", id: "RM" },
-        { type: "forward", position: "130px", id: "ST 1" },
-        { type: "forward", position: "390px", id: "ST 2" },
+      {type: "goalkeeper", position: "258px", id: "GK"},
+      { type: "defender", position: "60px", id: "RB" },
+      { type: "defender", position: "170px", id: "CB 1" },
+      { type: "defender", position: "340px", id: "CB 2" },
+      { type: "defender", position: "450px", id: "LB" },
+      { type: "midfielder", position: "60px", id: "LM" },
+      { type: "midfielder", position: "170px", id: "CM 1" },
+      { type: "midfielder", position: "340px", id: "CM 2" },
+      { type: "midfielder", position: "450px", id: "RM" },
+      { type: "forward", position: "130px", id: "ST 1" },
+      { type: "forward", position: "390px", id: "ST 2" },
       ],
-    },
-    {
+      },
+      {
       name: "3-4-3",
       positions: [
-        { type: "defender", position: "116px", id: "CB 1" },
-        { type: "defender", position: "258px", id: "CB 2" },
-        { type: "defender", position: "400px", id: "CB 3" },
-        { type: "midfielder", position: "60px", id: "LM" },
-        { type: "midfielder", position: "180px", id: "CM 1" },
-        { type: "midfielder", position: "330px", id: "CM 2" },
-        { type: "midfielder", position: "450px", id: "RM" },
-        { type: "forward", position: "100px", id: "RW" },
-        { type: "forward", position: "258px", id: "ST" },
-        { type: "forward", position: "410px", id: "LW" },
+      {type: "goalkeeper", position: "258px", id: "GK"},
+      { type: "defender", position: "116px", id: "CB 1" },
+      { type: "defender", position: "258px", id: "CB 2" },
+      { type: "defender", position: "400px", id: "CB 3" },
+      { type: "midfielder", position: "60px", id: "LM" },
+      { type: "midfielder", position: "180px", id: "CM 1" },
+      { type: "midfielder", position: "330px", id: "CM 2" },
+      { type: "midfielder", position: "450px", id: "RM" },
+      { type: "forward", position: "100px", id: "RW" },
+      { type: "forward", position: "258px", id: "ST" },
+      { type: "forward", position: "410px", id: "LW" },
       ],
-    },
-    {
+      },
+      {
       name: "4-2-4",
       positions: [
-        { type: "defender", position: "60px", id: "RB" },
-        { type: "defender", position: "180px", id: "CB 1" },
-        { type: "defender", position: "330px", id: "CB 2" },
-        { type: "defender", position: "450px", id: "LB" },
-        { type: "midfielder", position: "130px", id: "CM 1" },
-        { type: "midfielder", position: "390px", id: "CM 2" },
-        { type: "forward", position: "60px", id: "RW" },
-        { type: "forward", position: "180px", id: "ST 1" },
-        { type: "forward", position: "330px", id: "ST 2" },
-        { type: "forward", position: "450px", id: "LW" },
+      {type: "goalkeeper", position: "258px", id: "GK"},
+      { type: "defender", position: "60px", id: "RB" },
+      { type: "defender", position: "180px", id: "CB 1" },
+      { type: "defender", position: "330px", id: "CB 2" },
+      { type: "defender", position: "450px", id: "LB" },
+      { type: "midfielder", position: "130px", id: "CM 1" },
+      { type: "midfielder", position: "390px", id: "CM 2" },
+      { type: "forward", position: "60px", id: "RW" },
+      { type: "forward", position: "180px", id: "ST 1" },
+      { type: "forward", position: "330px", id: "ST 2" },
+      { type: "forward", position: "450px", id: "LW" },
       ],
-    },
+      },
   ];
 
   const { openModal } = useContext(DialogueContext);
-  const { isSelectOpen, openSelect, closeSelect } =
-    useContext(SelectPlayerContext);
+  const { openSelect, closeSelect } = useContext(SelectPlayerContext);
   const [selectedFormation, setSelectedFormation] = useState(formations[0]);
   const [players, setPlayers] = useState([]);
+  const [positionPlayers, setPositionPlayers] = useState({});
   const [selectedPosition, setSelectedPosition] = useState("");
 
   const handleFormationChange = (e) => {
@@ -80,15 +85,24 @@ const Pitch = () => {
       (formation) => formation.name === e.target.value
     );
     setSelectedFormation(selected);
+    setPositionPlayers({});
   };
 
   const savePlayer = (newPlayer) => {
     setPlayers([...players, newPlayer]);
   };
+
   const handlePlusClick = (positionId) => {
-    openSelect(); // Open the select player dialog
-    setSelectedPosition(positionId); // Set selected position for filtering
+    openSelect();
+    setSelectedPosition(positionId);
   };
+console.log(positionPlayers);
+  // const placePlayerInPosition = (playerName, positionId) => {
+  //   setPositionPlayers((prev) => ({ ...prev, [positionId]: playerName }));
+  //   console.log(positionPlayers);
+  //   closeSelect();
+  // };
+  
 
   return (
     <div className="flex">
@@ -129,33 +143,39 @@ const Pitch = () => {
             src="/assets/football.png"
             className="my-4 ml-auto pr-9"
           />
-
           {selectedFormation.positions.map((position, index) => (
-            <span
+            <div
               key={index}
-              className="absolute text-8xl hover:text-gray-300 cursor-pointer"
+              className="absolute cursor-pointer z-1"
               style={{
                 right: position.position,
                 bottom: getVerticalPosition(position.type),
               }}
               onClick={() => handlePlusClick(position.id)}
             >
-              <strong>+</strong>
-            </span>
+              {positionPlayers[position.id] ? (
+                <PlayerCard
+                  player={players.find(
+                    (player) => player.name === positionPlayers[position.id]
+                  )}
+                />
+              ) : (
+                <strong className="text-8xl hover:text-gray-300">+</strong>
+              )}
+            </div>
           ))}
-
-          <div className="absolute bottom-6 right-64 text-8xl hover:text-gray-300 cursor-pointer">
-            <p onClick={() => handlePlusClick("GK")}>
-              <strong>+</strong>
-            </p>
-          </div>
         </div>
       </div>
       <AddPlayer
         selectedFormation={selectedFormation}
         savePlayer={savePlayer}
+        players={players}
       />
-      <SelectPlayer players={players} selectedPosition={selectedPosition} />
+      <SelectPlayer
+        players={players}
+        selectedPosition={selectedPosition}
+        setPositionPlayers={setPositionPlayers}
+      />
     </div>
   );
 };
@@ -168,6 +188,8 @@ const getVerticalPosition = (type) => {
       return "360px";
     case "forward":
       return "550px";
+    case "goalkeeper":
+      return "20px";
     default:
       return "0";
   }

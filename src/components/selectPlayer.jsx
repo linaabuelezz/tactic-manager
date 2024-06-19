@@ -1,55 +1,53 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { SelectPlayerContext } from "../hooks/selectPlayerHook";
 import { Dialog, Button, Flex, Text } from "@radix-ui/themes";
 import PropTypes from "prop-types";
+import PlayerCard from "./playerCard";
 
-const SelectPlayer = ({ players, selectedPosition }) => {
-  const [selectedPlayer, setSelectedPlayer] = useState("");
-  const { isSelectOpen, closeSelect } =
-    useContext(SelectPlayerContext);
-    const [filteredPlayers, setFilteredPlayers] = useState([]);
-    useEffect(() => {
-        
-        if (selectedPosition) {
-          const playersFiltered = players.filter(
-            (player) => player.position === selectedPosition
-          );
-          setFilteredPlayers(playersFiltered);
-        } else {
-          setFilteredPlayers(players);
-        }
-      }, [selectedPosition, players]);
+const SelectPlayer = ({ players, selectedPosition, setPositionPlayers }) => {
+    const filteredPlayers = players.filter(
+        (player) => player.position === selectedPosition
+      );
+  const [selectedPlayer, setSelectedPlayer] = useState(filteredPlayers[0]?.name);
+  const { isSelectOpen, closeSelect } = useContext(SelectPlayerContext);
+  console.log(filteredPlayers[0]?.name)
 
-      const handleSave = () => {
-        // Handle save logic here
-        closeSelect(); // Close the select player dialog
-      };
+  // Handle saving the selected player to the specified position
+  const handleSave = () => {
+    setPositionPlayers((prev) => ({ ...prev, [selectedPosition]: selectedPlayer }));
+    console.log(selectedPlayer, selectedPosition);
+  };
 
   return (
     <Dialog.Root open={isSelectOpen} onOpenChange={closeSelect}>
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Select player</Dialog.Title>
         <Dialog.Description size="2" mb="4">
-          Select player you would like to add in this position.
+          Select the player you would like to add in this position.
         </Dialog.Description>
         <Flex direction="column" gap="3">
           <label>
             <Text as="div" size="2" mb="1" weight="bold">
-              Positions
+              Players
             </Text>
             <select
-              value={selectedPlayer}
-              onChange={(e) => setSelectedPlayer(e.target.value)}
+            value={selectedPlayer}
+              onChange={(e) => {setSelectedPlayer(e.target.value)
+                console.log(e.target.value)
+              }
+            }
               className="border-black border-2"
             >
-              <option disabled value="Select a position.">
-                Select a player.
+              <option disabled value="">
+                Select a player
               </option>
-              {filteredPlayers.map((player, index) => (
-                <option key={index} value={player.name} className="">
+              {filteredPlayers.map((player, index) => 
+                { console.log(player)
+                     return (<option key={index} value={player.name}>
                   {player.name}
-                </option>
-              ))}
+                </option>)}
+                
+              )}
             </select>
           </label>
         </Flex>
@@ -60,7 +58,7 @@ const SelectPlayer = ({ players, selectedPosition }) => {
             </Button>
           </Dialog.Close>
           <Dialog.Close>
-            <Button>Save</Button>
+            <Button onClick={handleSave}>Save</Button>
           </Dialog.Close>
         </Flex>
       </Dialog.Content>
@@ -72,10 +70,12 @@ SelectPlayer.propTypes = {
   players: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      kitNumber: PropTypes.number.isRequired,
+      kitNumber: PropTypes.string.isRequired,
       position: PropTypes.string.isRequired,
     })
   ).isRequired,
+  selectedPosition: PropTypes.string,
+  setPositionPlayers: PropTypes.func.isRequired,
 };
 
 export default SelectPlayer;
