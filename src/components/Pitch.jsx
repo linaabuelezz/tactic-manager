@@ -126,9 +126,11 @@ const Pitch = () => {
         <div>
           <ul>
             {players.map((player, index) => (
-              <li key={index}>
+              <div key={index} className="border-2 border-black mt-2 p-1">
+              <li  className="text-lg font-roboto-condensed font-bold ">
                 {player.name} - {player.kitNumber} ({player.position})
               </li>
+              </div>
             ))}
           </ul>
         </div>

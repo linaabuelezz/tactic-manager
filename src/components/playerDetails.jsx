@@ -19,15 +19,14 @@ const PlayerDetails = () => {
   };
 
   const handleDeletePlayer = (index) => {
-    // Remove the player from the players array
     const updatedPlayers = players.filter((_, i) => i !== index);
     setPlayers(updatedPlayers);
 
-    // Remove the corresponding detail and re-map the indices
+    
     const updatedDetails = Object.fromEntries(
       Object.entries(details)
         .filter(([key]) => parseInt(key) !== index)
-        .map(([key, value], idx) => [idx, value]) // Re-map indices to be sequential
+        .map(([key, value], idx) => [idx, value]) 
     );
 
     setDetails(updatedDetails);
@@ -58,7 +57,7 @@ const PlayerDetails = () => {
                 onClick={() => {
                   handleDeletePlayer(index);
                 }}
-                className="text-white bg-red-500 px-4 py-2 rounded-md ml-2"
+                className="text-white bg-red-500 px-4 py-1 font-bold hover:scale-110 rounded-md ml-2.5 "
               >
                 Delete Player
               </button>
