@@ -35,12 +35,12 @@ const PlayerDetails = () => {
 
   return (
     <>
-      <h1 className="my-2 ml-2 text-3xl font-bold">Player Details</h1>
+      <h1 className="my-3 ml-2 text-4xl font-bold">Player Details</h1>
       <div>
         <ul>
           {players.map((player, index) => (
-            <li key={index} className="ml-6 mb-4">
-              <div className="text-xl font-bold text-green-700">
+            <li key={index} className="ml-6 mb-5">
+              <div className="text-2xl font-bold text-indigo-700">
                 {player.name} - {player.kitNumber} ({player.position})
               </div>
               <h2 className="text-m">
@@ -51,7 +51,7 @@ const PlayerDetails = () => {
                 placeholder="e.g., Is injured and will be back on the 27th"
                 value={details[index] || ""}
                 onChange={(e) => handleDetailChange(index, e.target.value)}
-                className="border-2 border-black rounded-md text-md w-3/4 px-4"
+                className="border-2 border-black rounded-md text-md w-3/4 px-4 font-bold"
               />
               <button
                 onClick={() => {
