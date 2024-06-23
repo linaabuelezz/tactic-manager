@@ -4,18 +4,23 @@ import { Dialog, Button, Flex, Text } from "@radix-ui/themes";
 import PropTypes from "prop-types";
 import PlayerCard from "./playerCard";
 
-const SelectPlayer = ({ players, selectedPosition, setPositionPlayers }) => {
-    const filteredPlayers = players.filter(
-        (player) => player.position === selectedPosition
-      );
-  const [selectedPlayer, setSelectedPlayer] = useState(filteredPlayers[0]?.name);
+const SelectPlayer = ({ players, selectedPosition, setDisplayedPlayers }) => {
+  const filteredPlayers = players.filter(
+    (player) => player.position === selectedPosition
+  );
+  const [selectedPlayer, setSelectedPlayer] = useState(
+    filteredPlayers[0] || ""
+  );
   const { isSelectOpen, closeSelect } = useContext(SelectPlayerContext);
-  console.log(filteredPlayers[0]?.name)
 
-  // Handle saving the selected player to the specified position
-  const handleSave = () => {
-    setPositionPlayers((prev) => ({ ...prev, [selectedPosition]: selectedPlayer }));
-    console.log(selectedPlayer, selectedPosition);
+  const handleSave = (e) => {
+    e.preventDefault();
+    const selectedPlayer = e.target.selectedPlayer.value;
+    setSelectedPlayer(selectedPlayer);
+    const foundPlayer = filteredPlayers.find((chosenPlayer) => {
+      return chosenPlayer.id === selectedPlayer;
+    });
+    setDisplayedPlayers((prev) => [...prev, foundPlayer]);
   };
 
   return (
@@ -25,42 +30,42 @@ const SelectPlayer = ({ players, selectedPosition, setPositionPlayers }) => {
         <Dialog.Description size="2" mb="4">
           Select the player you would like to add in this position.
         </Dialog.Description>
-        <Flex direction="column" gap="3">
-          <label>
-            <Text as="div" size="2" mb="1" weight="bold">
-              Players
-            </Text>
-            <select
-            value={selectedPlayer}
-              onChange={(e) => {setSelectedPlayer(e.target.value)
-                console.log(e.target.value)
-              }
-            }
-              className="border-black border-2"
-            >
-              <option disabled value="">
-                Select a player
-              </option>
-              {filteredPlayers.map((player, index) => 
-                { console.log(player)
-                     return (<option key={index} value={player.name}>
-                  {player.name}
-                </option>)}
-                
-              )}
-            </select>
-          </label>
-        </Flex>
-        <Flex gap="3" mt="4" justify="end">
-          <Dialog.Close>
-            <Button variant="soft" color="gray">
-              Cancel
-            </Button>
-          </Dialog.Close>
-          <Dialog.Close>
-            <Button onClick={handleSave}>Save</Button>
-          </Dialog.Close>
-        </Flex>
+        <form onSubmit={handleSave}>
+          <Flex direction="column" gap="3">
+            <label>
+              <Text as="div" size="2" mb="1" weight="bold">
+                Players
+              </Text>
+
+              <select
+                // value={selectedPlayer}
+                name="selectedPlayer"
+                defaultValue={filteredPlayers[0]?.id || ""}
+                className="border-black border-2"
+              >
+                <option disabled value="">
+                  Select a player
+                </option>
+                {filteredPlayers.map((player, index) => (
+                  //  console.log(player)
+                  <option key={index} value={player.id}>
+                    {player.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </Flex>
+          <Flex gap="3" mt="4" justify="end">
+            <Dialog.Close>
+              <Button variant="soft" color="gray">
+                Cancel
+              </Button>
+            </Dialog.Close>
+            <Dialog.Close>
+              <Button type="submit">Save</Button>
+            </Dialog.Close>
+          </Flex>
+        </form>
       </Dialog.Content>
     </Dialog.Root>
   );
@@ -75,7 +80,7 @@ SelectPlayer.propTypes = {
     })
   ).isRequired,
   selectedPosition: PropTypes.string,
-  setPositionPlayers: PropTypes.func.isRequired,
+  setDisplayedPlayers: PropTypes.func.isRequired,
 };
 
 export default SelectPlayer;

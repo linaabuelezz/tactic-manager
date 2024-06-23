@@ -3,7 +3,8 @@ import { DialogueContext } from "../hooks/dialogueHook";
 import AddPlayer from "./addPlayer";
 import SelectPlayer from "./selectPlayer";
 import { SelectPlayerContext } from "../hooks/selectPlayerHook";
-import PlayerCard from "./playerCard";
+import { PlayersContext } from "../hooks/playerHook";
+import PlayerCard from "./playerCard.jsx";
 
 const Pitch = () => {
   const formations = [
@@ -12,96 +13,93 @@ const Pitch = () => {
       positions: [
       {type: "goalkeeper", position: "258px", id: "GK"},
       { type: "defender", position: "60px", id: "RB" },
-      { type: "defender", position: "170px", id: "CB 1" },
-      { type: "defender", position: "340px", id: "CB 2" },
+      { type: "defender", position: "170px", id: "RCB" },
+      { type: "defender", position: "340px", id: "LCB" },
       { type: "defender", position: "450px", id: "LB" },
-      { type: "midfielder", position: "110px", id: "CM 1" },
-      { type: "midfielder", position: "258px", id: "CM 2" },
-      { type: "midfielder", position: "406px", id: "CM 3" },
+      { type: "midfielder", position: "110px", id: "RCM" },
+      { type: "midfielder", position: "258px", id: "CM" },
+      { type: "midfielder", position: "406px", id: "LCM" },
       { type: "forward", position: "90px", id: "RW" },
       { type: "forward", position: "258px", id: "ST" },
       { type: "forward", position: "426px", id: "LW" },
       ],
       },
       {
-      name: "4-4-2",
-      positions: [
-      {type: "goalkeeper", position: "258px", id: "GK"},
-      { type: "defender", position: "60px", id: "RB" },
-      { type: "defender", position: "170px", id: "CB 1" },
-      { type: "defender", position: "340px", id: "CB 2" },
-      { type: "defender", position: "450px", id: "LB" },
-      { type: "midfielder", position: "60px", id: "LM" },
-      { type: "midfielder", position: "170px", id: "CM 1" },
-      { type: "midfielder", position: "340px", id: "CM 2" },
-      { type: "midfielder", position: "450px", id: "RM" },
-      { type: "forward", position: "130px", id: "ST 1" },
-      { type: "forward", position: "390px", id: "ST 2" },
-      ],
-      },
-      {
       name: "3-4-3",
       positions: [
       {type: "goalkeeper", position: "258px", id: "GK"},
-      { type: "defender", position: "116px", id: "CB 1" },
-      { type: "defender", position: "258px", id: "CB 2" },
-      { type: "defender", position: "400px", id: "CB 3" },
-      { type: "midfielder", position: "60px", id: "LM" },
-      { type: "midfielder", position: "180px", id: "CM 1" },
-      { type: "midfielder", position: "330px", id: "CM 2" },
-      { type: "midfielder", position: "450px", id: "RM" },
+      { type: "defender", position: "116px", id: "RCB" },
+      { type: "defender", position: "258px", id: "CB" },
+      { type: "defender", position: "400px", id: "LCB" },
+      { type: "midfielder", position: "60px", id: "RM" },
+      { type: "midfielder", position: "180px", id: "RCM" },
+      { type: "midfielder", position: "330px", id: "LCM" },
+      { type: "midfielder", position: "450px", id: "LM" },
       { type: "forward", position: "100px", id: "RW" },
       { type: "forward", position: "258px", id: "ST" },
       { type: "forward", position: "410px", id: "LW" },
       ],
       },
       {
+        name: "4-4-2",
+        positions: [
+        {type: "goalkeeper", position: "258px", id: "GK"},
+        { type: "defender", position: "60px", id: "RB" },
+        { type: "defender", position: "170px", id: "RCB" },
+        { type: "defender", position: "340px", id: "LCB" },
+        { type: "defender", position: "450px", id: "LB" },
+        { type: "midfielder", position: "60px", id: "RM" },
+        { type: "midfielder", position: "170px", id: "RCM" },
+        { type: "midfielder", position: "340px", id: "LCM" },
+        { type: "midfielder", position: "450px", id: "LM" },
+        { type: "forward", position: "130px", id: "ST 1" },
+        { type: "forward", position: "390px", id: "ST 2" },
+        ],
+        },
+      {
       name: "4-2-4",
       positions: [
       {type: "goalkeeper", position: "258px", id: "GK"},
       { type: "defender", position: "60px", id: "RB" },
-      { type: "defender", position: "180px", id: "CB 1" },
-      { type: "defender", position: "330px", id: "CB 2" },
+      { type: "defender", position: "180px", id: "RCB" },
+      { type: "defender", position: "330px", id: "LCB" },
       { type: "defender", position: "450px", id: "LB" },
-      { type: "midfielder", position: "130px", id: "CM 1" },
-      { type: "midfielder", position: "390px", id: "CM 2" },
+      { type: "midfielder", position: "130px", id: "RCM" },
+      { type: "midfielder", position: "390px", id: "LCM" },
       { type: "forward", position: "60px", id: "RW" },
-      { type: "forward", position: "180px", id: "ST 1" },
-      { type: "forward", position: "330px", id: "ST 2" },
+      { type: "forward", position: "180px", id: "R ST" },
+      { type: "forward", position: "330px", id: "L ST" },
       { type: "forward", position: "450px", id: "LW" },
       ],
       },
   ];
 
   const { openModal } = useContext(DialogueContext);
-  const { openSelect, closeSelect } = useContext(SelectPlayerContext);
+  const { openSelect } = useContext(SelectPlayerContext);
+  const { players, addPlayer } = useContext(PlayersContext);
   const [selectedFormation, setSelectedFormation] = useState(formations[0]);
-  const [players, setPlayers] = useState([]);
-  const [positionPlayers, setPositionPlayers] = useState({});
   const [selectedPosition, setSelectedPosition] = useState("");
+  const [displayedPlayers, setDisplayedPlayers] = useState([]);
+
+  const isPlayerFound = (positionId) => {
+    const foundPlayer = displayedPlayers.find((player) => player.position === positionId);
+    return foundPlayer;
+  }
+  
 
   const handleFormationChange = (e) => {
     const selected = formations.find(
       (formation) => formation.name === e.target.value
     );
     setSelectedFormation(selected);
-    setPositionPlayers({});
   };
 
-  const savePlayer = (newPlayer) => {
-    setPlayers([...players, newPlayer]);
-  };
+  
 
   const handlePlusClick = (positionId) => {
     openSelect();
     setSelectedPosition(positionId);
   };
-console.log(positionPlayers);
-  // const placePlayerInPosition = (playerName, positionId) => {
-  //   setPositionPlayers((prev) => ({ ...prev, [positionId]: playerName }));
-  //   console.log(positionPlayers);
-  //   closeSelect();
-  // };
   
 
   return (
@@ -153,28 +151,27 @@ console.log(positionPlayers);
               }}
               onClick={() => handlePlusClick(position.id)}
             >
-              {positionPlayers[position.id] ? (
+               {isPlayerFound(position.id) ? (
                 <PlayerCard
-                  player={players.find(
-                    (player) => player.name === positionPlayers[position.id]
-                  )}
-                />
-              ) : (
+                  player={isPlayerFound(position.id)} 
+                 /> 
+               ) : ( 
                 <strong className="text-8xl hover:text-gray-300">+</strong>
-              )}
+               )}
             </div>
           ))}
         </div>
       </div>
       <AddPlayer
         selectedFormation={selectedFormation}
-        savePlayer={savePlayer}
+        savePlayer={addPlayer}
         players={players}
       />
       <SelectPlayer
         players={players}
         selectedPosition={selectedPosition}
-        setPositionPlayers={setPositionPlayers}
+        setDisplayedPlayers={setDisplayedPlayers}
+
       />
     </div>
   );

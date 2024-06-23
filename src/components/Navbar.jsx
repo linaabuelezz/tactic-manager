@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -6,19 +7,21 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  
 
   return (
     <nav className="bg-black p-3 h-16 shadow-xl mt-0">
-      <div className="container m-auto flex justify-between items-center ">
-        <a href="./App.jsx" className="flex items-center">
+      <div className="container m-auto flex justify-between items-center">
+        <Link to="/" className="flex items-center">
           <img
-            src='/assets/logo.png'
+            src="/assets/logo.png"
             alt="logo"
             className="h-10 w-auto"
           ></img>
-        </a>
-        <button className="text-white md:hidden" onClick={toggleMenu}>
+        </Link>
+        <button
+          className="text-white md:hidden"
+          onClick={toggleMenu}
+        >
           ☰
         </button>
         <ul
@@ -27,9 +30,9 @@ const Navbar = () => {
           } md:flex space-x-10 font-mono`}
         >
           <li>
-            <a href="./App.jsx" className="text-white hover:text-gray-300 ">
+            <Link to="/" className="text-white hover:text-gray-300">
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a href="./about.jsx" className="text-white hover:text-gray-300">
@@ -37,14 +40,14 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="./Tactics.jsx" className="text-white hover:text-gray-300">
+            <a href="./tactics.jsx" className="text-white hover:text-gray-300">
               Tactics
             </a>
           </li>
           <li>
-            <a href="/contact" className="text-white hover:text-gray-300">
+            <Link to="/player-details" className="text-white hover:text-gray-300">
               Player details
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

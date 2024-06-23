@@ -2,6 +2,7 @@ import { Dialog, Button, Flex, TextField, Text } from "@radix-ui/themes";
 import { useState, useContext } from "react";
 import { DialogueContext } from "../hooks/dialogueHook";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const AddPlayer = ({ selectedFormation, savePlayer  }) => {
@@ -12,14 +13,15 @@ const AddPlayer = ({ selectedFormation, savePlayer  }) => {
     "GK"
   );
 
+
   
   const handleSave = () => {
     const newPlayer = {
       name: playerName,
       kitNumber: kitNumber,
       position: playerPosition,
+      id: uuidv4()
     };
-    console.log(playerPosition);
     savePlayer(newPlayer);
     closeModal();
     setName("");
@@ -68,9 +70,8 @@ const AddPlayer = ({ selectedFormation, savePlayer  }) => {
               selectedFormation?.positions.length > 0 && (
                 <select
                   value={playerPosition}
-                  onChange={(e) => {setPlayerPosition(e.target.value)
-                    console.log(e.target.value)
-                  }}
+                  onChange={(e) => setPlayerPosition(e.target.value)
+                  }
                   className="border-black border-2"
                 >
                   <option disabled value="Select a position.">
@@ -108,7 +109,6 @@ AddPlayer.propTypes = {
     positions: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
-        // positionName: PropTypes.string.isRequired,
       })
     ).isRequired,
   }),
