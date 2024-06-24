@@ -5,15 +5,12 @@ import "./App.css";
 import Pitch from "./components/pitch";
 import PlayerDetails from "./components/playerDetails";
 import { DialogueProvider } from "./hooks/dialogueHook";
-import { SelectPlayerProvider } from "./hooks/selectPlayerHook";
-import { PlayersProvider } from "./hooks/playerHook"; // Import the context
-
+import { PlayersProvider } from "./hooks/playerHook";
 function App() {
   return (
     <Theme>
       <PlayersProvider>
         <DialogueProvider>
-          <SelectPlayerProvider>
             <Router>
               <Navbar />
               <Routes>
@@ -21,7 +18,6 @@ function App() {
                 <Route path="/player-details" element={<PlayerDetails />} />
               </Routes>
             </Router>
-          </SelectPlayerProvider>
         </DialogueProvider>
       </PlayersProvider>
     </Theme>

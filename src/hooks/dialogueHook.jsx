@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 export const DialogueContext = createContext(null);
 export const DialogueProvider = ({children}) => {
     const [isModalOpen, setModalOpen] = useState(false);
+    const [modalType, setModalType] = useState("");
 
-    const openModal = () => setModalOpen(true);
+    const openModal = (type) => {setModalOpen(true);
+        setModalType(type);
+    }
     const closeModal = () => setModalOpen(false);
+    
 
-    const value = { isModalOpen, openModal, closeModal }
+    const value = { isModalOpen, openModal, closeModal, modalType }
 
     return (
         <DialogueContext.Provider value={value}>

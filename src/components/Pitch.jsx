@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { DialogueContext } from "../hooks/dialogueHook";
 import AddPlayer from "./addPlayer";
 import SelectPlayer from "./selectPlayer";
-import { SelectPlayerContext } from "../hooks/selectPlayerHook";
 import { PlayersContext } from "../hooks/playerHook";
 import PlayerCard from "./playerCard.jsx";
 
@@ -75,7 +74,6 @@ const Pitch = () => {
   ];
 
   const { openModal } = useContext(DialogueContext);
-  const { openSelect } = useContext(SelectPlayerContext);
   const { players, addPlayer } = useContext(PlayersContext);
   const [selectedFormation, setSelectedFormation] = useState(formations[0]);
   const [selectedPosition, setSelectedPosition] = useState("");
@@ -97,7 +95,7 @@ const Pitch = () => {
   
 
   const handlePlusClick = (positionId) => {
-    openSelect();
+    openModal("Select");
     setSelectedPosition(positionId);
   };
   
@@ -118,7 +116,7 @@ const Pitch = () => {
         </select>
         <button
           className="text-xl bg-emerald-500 p-2 rounded-xl hover:scale-110 text-white font-roboto-condensed font-normal"
-          onClick={openModal}
+          onClick={() => {openModal("Add")}}
         >
           Add player
         </button>

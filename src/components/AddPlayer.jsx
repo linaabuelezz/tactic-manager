@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const AddPlayer = ({ selectedFormation, savePlayer  }) => {
-  const { isModalOpen, closeModal } = useContext(DialogueContext);
+  const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
   const [playerName, setName] = useState("");
   const [kitNumber, setKitNumber] = useState("");
   const [playerPosition, setPlayerPosition] = useState(
@@ -34,7 +34,7 @@ const AddPlayer = ({ selectedFormation, savePlayer  }) => {
   }
 
   return (
-    <Dialog.Root open={isModalOpen} onOpenChange={closeModal}>
+    <Dialog.Root open={modalType === "Add" && isModalOpen} onOpenChange={closeModal}>
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Add player</Dialog.Title>
         <Dialog.Description size="2" mb="4">
