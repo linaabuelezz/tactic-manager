@@ -35,14 +35,14 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a href="./about.jsx" className="text-white hover:text-gray-300">
+            <Link to="/" className="text-white hover:text-gray-300">
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="./tactics.jsx" className="text-white hover:text-gray-300">
+            <Link to="/tactics-page" className="text-white hover:text-gray-300">
               Tactics
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/player-details" className="text-white hover:text-gray-300">

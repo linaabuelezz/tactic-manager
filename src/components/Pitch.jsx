@@ -104,12 +104,12 @@ const Pitch = () => {
     <div className="flex">
       <div className="flex-1 p-4">
         <select
-          className="p-2 mb-2 mr-3 border-2 border-black"
+          className="p-2 mb-2 mr-3 border-2 border-black font-semibold"
           value={selectedFormation.name}
           onChange={handleFormationChange}
         >
           {formations.map((formation, index) => (
-            <option key={index} value={formation.name}>
+            <option key={index} value={formation.name} className="font-semibold">
               {formation.name}
             </option>
           ))}

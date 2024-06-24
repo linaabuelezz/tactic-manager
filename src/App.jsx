@@ -6,6 +6,7 @@ import Pitch from "./components/pitch";
 import PlayerDetails from "./components/playerDetails";
 import { DialogueProvider } from "./hooks/dialogueHook";
 import { PlayersProvider } from "./hooks/playerHook";
+import TacticsPage from "./components/tacticsPage.jsx";
 function App() {
   return (
     <Theme>
@@ -16,6 +17,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Pitch />} />
                 <Route path="/player-details" element={<PlayerDetails />} />
+                <Route path="/tactics-page" element={<TacticsPage />} />
               </Routes>
             </Router>
         </DialogueProvider>
