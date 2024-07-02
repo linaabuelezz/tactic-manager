@@ -7,6 +7,7 @@ import PlayerDetails from "./components/playerDetails";
 import { DialogueProvider } from "./hooks/dialogueHook";
 import { PlayersProvider } from "./hooks/playerHook";
 import TacticsPage from "./components/tacticsPage.jsx";
+import AboutPage from "./components/AboutPage.jsx";
 function App() {
   return (
     <Theme>
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/" element={<Pitch />} />
                 <Route path="/player-details" element={<PlayerDetails />} />
                 <Route path="/tactics-page" element={<TacticsPage />} />
+                <Route path="/about-page" element={<AboutPage />} />
               </Routes>
             </Router>
         </DialogueProvider>

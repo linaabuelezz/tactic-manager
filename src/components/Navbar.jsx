@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black p-3 h-16 shadow-xl mt-0">
+    <nav className="bg-black p-3 h-16 shadow-xl mt-0 sticky top-0 z-50">
       <div className="container m-auto flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <img
@@ -35,7 +35,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="text-white hover:text-gray-300">
+            <Link to="/about-page" className="text-white hover:text-gray-300">
               About
             </Link>
           </li>

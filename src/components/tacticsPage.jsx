@@ -106,9 +106,9 @@ const TacticsPage = () => {
                     <YouTube videoId={tactic.videoId} className="w-full h-full" />
                   </div>
                 </div>
-                <div className="lg:w-1/3 w-full lg:pl-4 mt-4 lg:mt-0 flex flex-col">
+                <div className="lg:w-2/3 w-full lg:pl-4 mt-4 lg:mt-0 flex flex-col">
                   <div>
-                    <h3 className="text-xl font-semibold mt-4 lg:mt-12">Pros:</h3>
+                    <h3 className="text-xl font-semibold mt-4 lg:mt-24">Pros:</h3>
                     <ul className="list-disc ml-5 mb-4">
                       {tactic.pros.map((pro, proIndex) => (
                         <li key={proIndex}>{pro}</li>
