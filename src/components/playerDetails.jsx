@@ -32,14 +32,18 @@ const PlayerDetails = () => {
     setDetails(updatedDetails);
     localStorage.setItem("playerDetails", JSON.stringify(updatedDetails));
   };
+  
 
   return (
     <>
-      <h1 className="my-3 ml-2 text-4xl font-bold">Player Details</h1>
+      <h1 className="my-3 ml-6 text-4xl font-bold">Player Details</h1>
       <div>
+      {players.length === 0 ? (
+          <p className="ml-6 mb-5 text-2xl text-gray-600">No players available. Add some players to get started!</p>
+        ) : (
         <ul>
           {players.map((player, index) => (
-            <li key={index} className="ml-6 mb-5">
+            <li key={index} className="ml-6 mb-5 border-2 p-1 w-2/3">
               <div className="text-2xl font-bold text-indigo-700">
                 {player.name} - {player.kitNumber} ({player.position})
               </div>
@@ -64,6 +68,7 @@ const PlayerDetails = () => {
             </li>
           ))}
         </ul>
+        )}
       </div>
     </>
   );
