@@ -5,7 +5,7 @@ const AboutPage = () => {
         <div className="flex flex-col md:flex-row items-center mb-10">
           <div className="relative w-full md:w-1/2">
             <img
-              src="../../public/assets/ballonpitch.jpg"
+              src="/assets/ballonpitch.jpg"
               alt="Ball set up for corner kick."
               className="w-full h-auto object-cover ml-4"
             ></img>
@@ -22,7 +22,7 @@ const AboutPage = () => {
       <div className="flex flex-col md:flex-row-reverse items-center mr-4">
         <div className="relative w-full md:w-1/2">
           <img
-            src="../../public/assets/militaoheader.jpg"
+            src="/assets/militaoheader.jpg"
             alt="Descriptive Alt Text"
             className="w-full h-auto object-cover "
           />
@@ -42,7 +42,7 @@ const AboutPage = () => {
         <div className="flex flex-col md:flex-row items-center mb-10">
           <div className="relative w-full md:w-1/2">
             <img
-              src="../../public/assets/coachwithteam.jpg"
+              src="/assets/coachwithteam.jpg"
               alt="Ball set up for corner kick."
               className="w-full h-auto object-cover ml-4"
             ></img>
