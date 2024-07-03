@@ -25,7 +25,7 @@ const PlayerDetails = () => {
     const updatedDetails = Object.fromEntries(
       Object.entries(details)
         .filter(([key]) => parseInt(key) !== index)
-        .map(([key, value], idx) => [idx, value])
+        .map(([value], idx) => [idx, value])
     );
 
     setDetails(updatedDetails);
