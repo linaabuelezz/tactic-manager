@@ -138,7 +138,7 @@ const Pitch = () => {
         <div className="relative">
           <img
             alt="football pitch"
-            src="../../public/assets/football.png"
+            src="/tactic-manager/assets/football.png"
             className="my-4 ml-auto pr-9"
           />
           {selectedFormation.positions.map((position, index) => (
