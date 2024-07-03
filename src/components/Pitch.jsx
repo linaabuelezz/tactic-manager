@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import { DialogueContext } from "../hooks/DialogueHook.jsx";
 import AddPlayer from "./AddPlayer.jsx";
-import SelectPlayer from "./SelectPlayertemp.jsx";
-import { PlayersContext } from "../hooks/PlayerHooktemp.jsx";
-import PlayerCard from "./PlayerCardtemp.jsx";
+import SelectPlayer from "./SelectPlayer.jsx";
+import { PlayersContext } from "../hooks/PlayerHook.jsx";
+import PlayerCard from "./PlayerCard.jsx";
 
 const Pitch = () => {
   const formations = [

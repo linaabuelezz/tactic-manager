@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { PlayersContext } from "../hooks/PlayerHooktemp";
+import { PlayersContext } from "../hooks/PlayerHook";
 
 const PlayerDetails = () => {
   const { players, setPlayers } = useContext(PlayersContext);
