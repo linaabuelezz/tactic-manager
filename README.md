@@ -13,7 +13,7 @@ Add players with specific information about them such as name, number and positi
   Provides you with 5 different tactic ideas, each with a video explaining them and a pros and cons list.
 
 - **Player Details:**
-- Allows you to view all your added players,add extra information to remember about them and even delete them.
+  Allows you to view all your added players,add extra information to remember about them and even delete them.
 
 ## Technologies
 
@@ -23,5 +23,5 @@ Add players with specific information about them such as name, number and positi
   N/A
 - **Database:**
   N/A
--**Hosting:**
+- **Hosting:**
   Vercel
