@@ -19,7 +19,8 @@ export const DialogueProvider = ({children}) => {
            {children}
         </DialogueContext.Provider>
     )
-}
+}.l,/;'
+'
 
 DialogueProvider.propTypes = {
     children: PropTypes.node
