@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Theme } from "@radix-ui/themes";
 import "./App.css";
-import PlayerDetails from "./components/playerDetails";
-import { DialogueProvider } from "./hooks/dialogueHook";
-import { PlayersProvider } from "./hooks/playerHook";
-import TacticsPage from "./components/tacticsPage.jsx";
+import PlayerDetails from "./components/PlayerDetails.jsx";
+import { DialogueProvider } from "./hooks/DialogueHook.jsx";
+import { PlayersProvider } from "./hooks/PlayerHook.jsx";
+import TacticsPage from "./components/TacticsPage.jsx";
 import AboutPage from "./components/AboutPage.jsx";
-// import Navbar from "./components/navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import Pitch from "./components/Pitch.jsx";
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <PlayersProvider>
         <DialogueProvider>
           <Router>
-            {/* <Navbar /> */}
+            <Navbar />
             <Routes>
               <Route path="/" element={<Pitch />} />
               <Route path="/player-details" element={<PlayerDetails />} />

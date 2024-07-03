@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Dialog, Button, Flex, Text } from "@radix-ui/themes";
 import PropTypes from "prop-types";
-import { DialogueContext } from "../hooks/dialogueHook";
+import { DialogueContext } from "../hooks/DialogueHook";
 
 const SelectPlayer = ({ players, selectedPosition, setDisplayedPlayers }) => {
   const filteredPlayers = players.filter(
@@ -23,7 +23,10 @@ const SelectPlayer = ({ players, selectedPosition, setDisplayedPlayers }) => {
   };
 
   return (
-    <Dialog.Root open={modalType === "Select" && isModalOpen} onOpenChange={closeModal}>
+    <Dialog.Root
+      open={modalType === "Select" && isModalOpen}
+      onOpenChange={closeModal}
+    >
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Select player</Dialog.Title>
         <Dialog.Description size="2" mb="4">

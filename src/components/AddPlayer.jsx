@@ -1,26 +1,21 @@
 import { Dialog, Button, Flex, TextField, Text } from "@radix-ui/themes";
 import { useState, useContext } from "react";
-import { DialogueContext } from "../hooks/dialogueHook";
+import { DialogueContext } from "../hooks/DialogueHook";
 import PropTypes from "prop-types";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
-
-const AddPlayer = ({ selectedFormation, savePlayer  }) => {
+const AddPlayer = ({ selectedFormation, savePlayer }) => {
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
   const [playerName, setName] = useState("");
   const [kitNumber, setKitNumber] = useState("");
-  const [playerPosition, setPlayerPosition] = useState(
-    "GK"
-  );
+  const [playerPosition, setPlayerPosition] = useState("GK");
 
-
-  
   const handleSave = () => {
     const newPlayer = {
       name: playerName,
       kitNumber: kitNumber,
       position: playerPosition,
-      id: uuidv4()
+      id: uuidv4(),
     };
     savePlayer(newPlayer);
     closeModal();
@@ -34,7 +29,10 @@ const AddPlayer = ({ selectedFormation, savePlayer  }) => {
   }
 
   return (
-    <Dialog.Root open={modalType === "Add" && isModalOpen} onOpenChange={closeModal}>
+    <Dialog.Root
+      open={modalType === "Add" && isModalOpen}
+      onOpenChange={closeModal}
+    >
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Add player</Dialog.Title>
         <Dialog.Description size="2" mb="4">
@@ -70,16 +68,14 @@ const AddPlayer = ({ selectedFormation, savePlayer  }) => {
               selectedFormation?.positions.length > 0 && (
                 <select
                   value={playerPosition}
-                  onChange={(e) => setPlayerPosition(e.target.value)
-                  }
+                  onChange={(e) => setPlayerPosition(e.target.value)}
                   className="border-black border-2"
                 >
                   <option disabled value="Select a position.">
                     Select a position.
                   </option>
                   {selectedFormation?.positions.map((position, index) => (
-                    <option key={index} value={position.id} className=""
-                    >
+                    <option key={index} value={position.id} className="">
                       {position.id}
                     </option>
                   ))}
