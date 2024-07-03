@@ -30,7 +30,7 @@ const Navbar = () => {
           } md:flex space-x-10 font-mono`}
         >
           <li>
-            <Link to="/tactic-manager" className="text-white hover:text-gray-300">
+            <Link to="/" className="text-white hover:text-gray-300">
               Home
             </Link>
           </li>
