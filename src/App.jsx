@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Theme } from "@radix-ui/themes";
 import "./App.css";
-import Pitch from "./components/pitch";
 import PlayerDetails from "./components/playerDetails";
 import { DialogueProvider } from "./hooks/dialogueHook";
 import { PlayersProvider } from "./hooks/playerHook";
 import TacticsPage from "./components/tacticsPage.jsx";
 import AboutPage from "./components/AboutPage.jsx";
 import Navbar from "./components/navbar.jsx";
+import Pitch from "./components/pitch.jsx";
 function App() {
   return (
     <Theme>
