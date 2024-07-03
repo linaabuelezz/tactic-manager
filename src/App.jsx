@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar.jsx";
 import { Theme } from "@radix-ui/themes";
 import "./App.css";
 import Pitch from "./components/pitch";
@@ -8,6 +7,7 @@ import { DialogueProvider } from "./hooks/dialogueHook";
 import { PlayersProvider } from "./hooks/playerHook";
 import TacticsPage from "./components/tacticsPage.jsx";
 import AboutPage from "./components/AboutPage.jsx";
+import Navbar from "./components/navbar.jsx";
 function App() {
   return (
     <Theme>

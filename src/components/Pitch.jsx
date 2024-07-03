@@ -138,7 +138,7 @@ const Pitch = () => {
         <div className="relative">
           <img
             alt="football pitch"
-            src="/assets/football.png"
+            src="../../public/assets/football.png"
             className="my-4 ml-auto pr-9"
           />
           {selectedFormation.positions.map((position, index) => (
