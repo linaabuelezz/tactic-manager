@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Theme } from "@radix-ui/themes";
 import "./App.css";
-import PlayerDetails from "./components/PlayerDetails.jsx";
+// import PlayerDetails from "./components/PlayerDetails.jsx";
 import { DialogueProvider } from "./hooks/DialogueHook.jsx";
 import { PlayersProvider } from "./hooks/PlayerHook.jsx";
 import TacticsPage from "./components/TacticsPage.jsx";
@@ -17,7 +17,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Pitch />} />
-              <Route path="/player-details" element={<PlayerDetails />} />
+              {/* <Route path="/player-details" element={<PlayerDetails />} /> */}
               <Route path="/tactics-page" element={<TacticsPage />} />
               <Route path="/about-page" element={<AboutPage />} />
             </Routes>
