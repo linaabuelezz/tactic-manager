@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Dialog, Button, Flex, Text } from "@radix-ui/themes";
 import PropTypes from "prop-types";
-import { DialogueContext } from "../hooks/DialogueHooktemp";
+import { DialogueContext } from "../hooks/DialogueHook";
 
 const SelectPlayer = ({ players, selectedPosition, setDisplayedPlayers }) => {
   const filteredPlayers = players.filter(
