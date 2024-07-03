@@ -16,7 +16,7 @@ function App() {
             <Router>
               <Navbar />
               <Routes>
-                <Route path="/" element={<Pitch />} />
+                <Route path="/tactic-manager" element={<Pitch />} />
                 <Route path="/player-details" element={<PlayerDetails />} />
                 <Route path="/tactics-page" element={<TacticsPage />} />
                 <Route path="/about-page" element={<AboutPage />} />
