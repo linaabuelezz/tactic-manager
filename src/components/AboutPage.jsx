@@ -50,7 +50,7 @@ const AboutPage = () => {
               <h2 className="text-xl font-semibold">Our Goal</h2>
               <p>
                 The long term aspirations for this website are for us to make coaches lives easier by allowing them to use this simple website to create lineups, store information about their players they may forget and even suggest different tactics.
-                In the future, one goal is to add a section to store stats for each player, so keep an eye out for that!
+                In the future, one goal is to add a section to store stats for each player and to make it work to scale on phones, so keep an eye out for that!
               </p>
             </div>
           </div>

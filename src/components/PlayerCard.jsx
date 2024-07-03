@@ -4,7 +4,7 @@ const PlayerCard = ({ player }) => {
     return (
         <div className="relative w-20 h-28 border rounded-lg overflow-hidden shadow-lg bg-white">
         <img
-          src="../../public/assets/blue-background.jpg" 
+          src="/assets/blue-background.jpg" 
           alt="Card Background"
           className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
