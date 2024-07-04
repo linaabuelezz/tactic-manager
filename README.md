@@ -1,8 +1,27 @@
-# React + Vite
+# Tactic-Manager
+This is a website created to allow local coaches to be able to create a lineup for their players, choose a formation, add them onto the pitch according to the player position and even add extra details for them. It was made while thinking about sustainability to reduce their usage of paper and even in the cases where they forget to bring a whiteboard, hopefully leading to this becoming their number one option.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+- **Home:**
+Add players with specific information about them such as name, number and position and add them in their position onto the pitch after selecting a formation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **About:**
+  Gives you a great explanation of what the website does and its capabilities and future goals for it.
+
+- **Tactics:**
+  Provides you with 5 different tactic ideas, each with a video explaining them and a pros and cons list.
+
+- **Player Details:**
+  Allows you to view all your added players,add extra information to remember about them and even delete them.
+
+## Technologies
+
+- **Frontend:**
+  React, React-Youtube, Tailwind CSS
+- **Backend:**
+  N/A
+- **Database:**
+  N/A
+- **Hosting:**
+  Vercel
