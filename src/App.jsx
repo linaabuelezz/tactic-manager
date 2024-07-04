@@ -15,12 +15,12 @@ function App() {
         <DialogueProvider>
           <Router>
             <Navbar />
-            <Routes>
-              <Route path="/" element={<Pitch />} />
-              <Route path="/player-details" element={<PlayerDetails />} />
-              <Route path="/tactics-page" element={<TacticsPage />} />
-              <Route path="/about-page" element={<AboutPage />} />
-            </Routes>
+              <Routes>
+                <Route path="/" element={<Pitch />} />
+                <Route path="/player-details" element={<PlayerDetails />} />
+                <Route path="/tactics-page" element={<TacticsPage />} />
+                <Route path="/about-page" element={<AboutPage />} />
+              </Routes>
           </Router>
         </DialogueProvider>
       </PlayersProvider>
