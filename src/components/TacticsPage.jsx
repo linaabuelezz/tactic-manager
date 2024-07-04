@@ -89,8 +89,8 @@ const TacticsPage = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <>
-      <h1 className="text-5xl font-bold text-center mb-8 mt-4 hover:underline hover:cursor-cell">Tactics</h1>
+    <div className="bg-[url('/assets/greybg.jpg')] bg-cover bg-fixed">
+      <h1 className="text-5xl font-bold text-center mb-8 pt-4 hover:underline hover:cursor-cell">Tactics</h1>
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <ClipLoader size={50} color="#123abc" />
@@ -129,7 +129,7 @@ const TacticsPage = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
