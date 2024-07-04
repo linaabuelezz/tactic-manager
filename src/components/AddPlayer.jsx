@@ -1,5 +1,5 @@
 import { Dialog, Button, Flex, TextField, Text } from "@radix-ui/themes";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { DialogueContext } from "../hooks/DialogueHook";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
@@ -9,14 +9,42 @@ const AddPlayer = ({ selectedFormation, savePlayer }) => {
   const [playerName, setName] = useState("");
   const [kitNumber, setKitNumber] = useState("");
   const [playerPosition, setPlayerPosition] = useState("GK");
+  const [errors, setErrors] = useState({
+    playerName: "",
+    kitNumber: "",
+    playerPosition: "",
+  });
+
+  useEffect(() => {
+    setErrors({
+      playerName: playerName.trim() === "" ? "Player name is required" : "",
+      kitNumber: kitNumber.trim() === "" ? "Kit number is required" : "",
+      playerPosition: playerPosition === "Select a position." ? "Position is required" : "",
+    });
+  }, [playerName, kitNumber, playerPosition]);
 
   const handleSave = () => {
+    const isFormValid =
+      playerName.trim() !== "" &&
+      kitNumber.trim() !== "" &&
+      playerPosition !== "Select a position.";
+
+    if (!isFormValid) {
+      setErrors({
+        playerName: playerName.trim() === "" ? "Player name is required" : "",
+        kitNumber: kitNumber.trim() === "" ? "Kit number is required" : "",
+        playerPosition: playerPosition === "Select a position." ? "Position is required" : "",
+      });
+      return;
+    }
+
     const newPlayer = {
       name: playerName,
       kitNumber: kitNumber,
       position: playerPosition,
       id: uuidv4(),
     };
+
     savePlayer(newPlayer);
     closeModal();
     setName("");
@@ -49,6 +77,11 @@ const AddPlayer = ({ selectedFormation, savePlayer }) => {
               placeholder="Enter player's name"
               onChange={(e) => setName(e.target.value)}
             />
+            {errors.playerName && (
+              <Text size="2" color="red" mt="1">
+                {errors.playerName}
+              </Text>
+            )}
           </label>
           <label>
             <Text as="div" size="2" mb="1" weight="bold">
@@ -59,6 +92,11 @@ const AddPlayer = ({ selectedFormation, savePlayer }) => {
               placeholder="Enter player's kit no."
               onChange={(e) => setKitNumber(e.target.value)}
             />
+            {errors.kitNumber && (
+              <Text size="2" color="red" mt="1">
+                {errors.kitNumber}
+              </Text>
+            )}
           </label>
           <label>
             <Text as="div" size="2" mb="1" weight="bold">
@@ -80,7 +118,12 @@ const AddPlayer = ({ selectedFormation, savePlayer }) => {
                     </option>
                   ))}
                 </select>
-              )}
+            )}
+            {errors.playerPosition && (
+              <Text size="2" color="red" mt="1">
+                {errors.playerPosition}
+              </Text>
+            )}
           </label>
         </Flex>
 
@@ -90,9 +133,9 @@ const AddPlayer = ({ selectedFormation, savePlayer }) => {
               Cancel
             </Button>
           </Dialog.Close>
-          <Dialog.Close>
-            <Button onClick={handleSave}>Save</Button>
-          </Dialog.Close>
+          <Button onClick={handleSave}>
+            Save
+          </Button>
         </Flex>
       </Dialog.Content>
     </Dialog.Root>
