@@ -71,6 +71,22 @@ const Pitch = () => {
         { type: "forward", position: "450px", id: "LW" },
       ],
     },
+    {
+      name: "4-5-1",
+      positions: [
+        { type: "goalkeeper", position: "258px", id: "GK" },
+        { type: "defender", position: "60px", id: "RB" },
+        { type: "defender", position: "180px", id: "RCB" },
+        { type: "defender", position: "330px", id: "LCB" },
+        { type: "defender", position: "450px", id: "LB" },
+        { type: "midfielder", position: "60px", id: "RM" },
+        { type: "midfielder", position: "159px", id: "RCM" },
+        { type: "midfielder", position: "258px", id: "CM" },
+        { type: "midfielder", position: "357px", id: "LCM" },
+        { type: "midfielder", position: "456px", id: "LM" },
+        { type: "forward", position: "258px", id: "ST" },
+      ],
+    }
   ];
 
   const { openModal } = useContext(DialogueContext);
