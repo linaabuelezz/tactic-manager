@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CustomFont';
-    src: url('./assets/fonts/Pioggia.ttf') format('truetype');
+    src: url('/assets/fonts/Pioggia.ttf') format('truetype');
   }
   
   .custom-font {
