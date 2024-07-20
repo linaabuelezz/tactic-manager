@@ -8,6 +8,8 @@ import TacticsPage from "./components/TacticsPage.jsx";
 import AboutPage from "./components/AboutPage.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Pitch from "./components/Pitch.jsx";
+import "./fonts.css";
+
 function App() {
   return (
     <Theme>

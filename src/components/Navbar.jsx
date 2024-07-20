@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="container m-auto flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <img
-            src="/assets/logo.png"
+            src="/assets/logo2.png"
             alt="logo"
             className="h-10 w-auto"
           ></img>
@@ -30,22 +30,22 @@ const Navbar = () => {
           } md:flex space-x-10 font-mono`}
         >
           <li>
-            <Link to="/" className="text-white hover:text-gray-300">
+            <Link to="/" className="text-white hover:text-gray-300 custom-font text-2xl">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about-page" className="text-white hover:text-gray-300">
+            <Link to="/about-page" className="text-white hover:text-gray-300 custom-font text-2xl">
               About
             </Link>
           </li>
           <li>
-            <Link to="/tactics-page" className="text-white hover:text-gray-300">
+            <Link to="/tactics-page" className="text-white hover:text-gray-300 custom-font text-2xl">
               Tactics
             </Link>
           </li>
           <li>
-            <Link to="/player-details" className="text-white hover:text-gray-300">
+            <Link to="/player-details" className="text-white hover:text-gray-300 custom-font text-2xl">
               Player details
             </Link>
           </li>

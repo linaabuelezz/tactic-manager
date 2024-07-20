@@ -7,9 +7,9 @@ const AboutPage = () => {
             <img
               src="/assets/ballonpitch.jpg"
               alt="Ball set up for corner kick."
-              className="w-full h-auto object-cover ml-4"
+              className="w-full h-auto object-cover ml-4 rounded-md"
             ></img>
-            <div className="absolute top-4 right-0 transform translate-x-1/2 translate-y-1/4 bg-white p-4 md:p-6 shadow-xl max-w-xs">
+            <div className="absolute top-4 right-0 transform translate-x-1/2 translate-y-1/4 bg-white p-4 md:p-6 shadow-xl max-w-xs rounded-md">
               <h2 className="text-xl font-semibold">Our Idea</h2>
               <p>
                 This website was created to make it easier for local coaches to
@@ -24,9 +24,9 @@ const AboutPage = () => {
           <img
             src="/assets/militaoheader.jpg"
             alt="Descriptive Alt Text"
-            className="w-full h-auto object-cover "
+            className="w-full h-auto object-cover rounded-md"
           />
-          <div className="absolute top-4 left-0 transform -translate-x-1/2 translate-y-1/4 bg-white p-4 md:p-6 shadow-xl max-w-xs">
+          <div className="absolute top-4 left-0 transform -translate-x-1/2 translate-y-1/4 bg-white p-4 md:p-6 shadow-xl max-w-xs rounded-md">
             <h2 className="text-xl font-semibold">Features</h2>
             <p>
               This Web app has many features such as the ability to select a
@@ -44,9 +44,9 @@ const AboutPage = () => {
             <img
               src="/assets/coachwithteam.jpg"
               alt="Ball set up for corner kick."
-              className="w-full h-auto object-cover ml-4"
+              className="w-full h-auto object-cover ml-4 rounded-md"
             ></img>
-            <div className="absolute top-0 right-0 transform translate-x-1/2 translate-y-8 bg-white p-4 md:p-6 shadow-xl max-w-xs">
+            <div className="absolute top-0 right-0 transform translate-x-1/2 translate-y-8 bg-white p-4 md:p-6 shadow-xl max-w-xs rounded-md">
               <h2 className="text-xl font-semibold">Our Goal</h2>
               <p>
                 The long term aspirations for this website are for us to make coaches lives easier by allowing them to use this simple website to create lineups, store information about their players they may forget and even suggest different tactics.

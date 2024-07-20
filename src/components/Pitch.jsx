@@ -115,10 +115,10 @@ const Pitch = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex bg-[url('/assets/greybg.jpg')] bg-fixed bg-cover">
       <div className="flex-1 p-4">
         <select
-          className="p-2 mb-2 mr-3 border-2 border-black font-semibold"
+          className="p-2 mb-2 mr-3 border-2 border-black font-semibold rounded-lg"
           value={selectedFormation.name}
           onChange={handleFormationChange}
         >
@@ -133,18 +133,18 @@ const Pitch = () => {
           ))}
         </select>
         <button
-          className="text-xl bg-emerald-500 p-2 rounded-xl hover:scale-110 text-white font-roboto-condensed font-normal"
+          className="text-xl bg-emerald-500 p-2 rounded-lg hover:scale-110 text-white font-roboto-condensed font-normal"
           onClick={() => {
             openModal("Add");
           }}
         >
           Add player
         </button>
-        <div className="border-2 mt-2"></div>
+        <div className="border-2 mb-4 mt-2 border-black"></div>
         <div>
           <ul>
             {players.map((player, index) => (
-              <div key={index} className="border-2 border-black mt-2 p-1">
+              <div key={index} className="border-2 border-black mt-2 p-1 rounded-lg bg-white">
                 <li className="text-lg font-roboto-condensed font-bold ">
                   {player.name} - {player.kitNumber} ({player.position})
                 </li>
